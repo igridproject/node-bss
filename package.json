@@ -1,0 +1,30 @@
+{
+  "name": "node-bss",
+  "version": "1.5.0",
+  "description": "binary stream storage",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/igridproject/node-bss.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/igridproject/node-bss/issues"
+  },
+  "homepage": "https://github.com/igridproject/node-bss#readme",
+  "dependencies": {
+    "async": "^2.4.1",
+    "bson": "^1.0.4",
+    "buffalo": "^0.1.3",
+    "dateformat": "^2.0.0",
+    "minimist": "^1.2.0",
+    "node-uuid": "^1.4.8",
+    "quickq": "^0.9.3",
+    "random-access-file": "^1.8.1",
+    "thunky": "^1.0.2"
+  }
+}
