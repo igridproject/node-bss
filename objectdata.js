@@ -1,6 +1,6 @@
 var BSON = require('buffalo');
-var bsonp = require('bson')
-var BSONP = new bsonp.BSONPure.BSON()
+//var JS_BSON = require('bson');
+var BSONP = require('./faster_bson');
 
 const OBJHEADERSIZE = 80;
 
@@ -104,7 +104,8 @@ ObjectData.prototype.readObject = function(opt,cb){
     if(!err){
       var obj = {
         header : self.header,
-        meta : BSON.parse(buff.slice(0,self.header.MZ)),
+        //meta : BSON.parse(buff.slice(0,self.header.MZ)),
+        meta : BSONP.deserializeFast(buff.slice(0,self.header.MZ)),
         data : parse_data(buff.slice(self.header.MZ,self.header.MZ+self.header.DZ),self.header.TY),
       }
 
@@ -120,7 +121,8 @@ var parse_data = function(buffer,ty){
   if(ty==STRING_TYPE){
     return buffer.toString('utf8');
   }else if(ty==OBJECT_TYPE){
-    return BSON.parse(buffer);
+    //return BSON.parse(buffer);
+    return BSONP.deserializeFast(buffer);
   }else{
     return buffer;
   }
